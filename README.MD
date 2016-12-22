@@ -17,7 +17,6 @@ Use the CycleMenu in layout file
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         
-        <!--  non mandatory params -->
         app:cm_autoMaxRadius="220dp"
         app:cm_autoMinRadius="10dp"
         app:cm_corner="right_top"
