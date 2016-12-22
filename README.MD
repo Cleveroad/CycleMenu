@@ -42,7 +42,7 @@ cycleMenuWidget.setMenuItems(Collection<CycleMenuItem> items);
 ```
 
 You can setup any attribute from xml via method.
-Methods for setting radius scaling type
+Methods for setting radius scaling type:
 ```JAVA
 void setScalingType(RADIUS_SCALING_TYPE scalingType)
 void setAutoMinRadius(int autoMinRadius)
