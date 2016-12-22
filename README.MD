@@ -41,20 +41,36 @@ cycleMenuWidget.setMenuRes(R.menu.menu_items);
 cycleMenuWidget.setMenuItems(Collection<CycleMenuItem> items);
 ```
 
-methods for changing any settings you can set via attribute in xml:
+You can setup any attribute from xml via method.
+Methods for setting radius scaling type
 ```JAVA
-void setScrollType(SCROLL scrollType)
+void setScalingType(RADIUS_SCALING_TYPE scalingType)
 void setAutoMinRadius(int autoMinRadius)
 void setAutoMaxRadius(int autoMaxRadius)
-void setScalingType(RADIUS_SCALING_TYPE scalingType)
-void setCorner(CORNER corner)
 void setFixedRadius(int fixedRadius)
+
+```
+If you choose to use RADIUS_SCALING_TYPE.AUTO then you need to setup autoMinRadius and autoMaxRadius. This values will be use to calculate radius of menu. 
+If menu has small amount of items - the radius will be calculated to fit all items but not less then autoMinRadius. If there is a lot of items in the menu then radius will be equal autoMaxRadius. 
+if you setup autoMaxRadius bigger then available space for the menu - radius will be reduced.
+If you choose to use RADIUS_SCALING_TYPE.FIXED the the menu radius will be equal to fixedRadius. But not bigger then available space for the menu.
+  
+To setup scroll type. The scroll type can be ENDLESS (infinite scrolling) ans BASIC (general scrolling). 
+```JAVA
+void setScrollType(SCROLL scrollType)
+```
+
+To setup corner in which will be placed menu use:
+```JAVA
+void setCorner(CORNER corner)
+```
+And methods to setup UI:
+```JAVA
 void setItemsBackgroundTint(ColorStateList itemsBackgroundTint)
 void setRippleColor(int rippleColor)
 void setCornerImageDrawable(Drawable cornerImageDrawable)
 void setCornerImageResource(@DrawableRes int drawableRes)
 void setCornerImageBitmap(Bitmap bitmap)
-
 ```
 
 For listening changing menu state use
