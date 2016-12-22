@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cm_shadow_start_color">#1D000000</color>
+    <color name="cm_shadow_mid_color">#0E000000</color>
+    <color name="cm_shadow_end_color">#00000000</color>
+
+    <color name="cm_ripple_color">#443F51B5</color>
+</resources>

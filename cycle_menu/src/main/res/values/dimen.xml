@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cm_min_margins">5dp</dimen>
+    <dimen name="cm_circle_min_radius">50dp</dimen>
+    <dimen name="cm_menu_center_icon_size">32dp</dimen>
+    <dimen name="cm_prelollipop_additional_margin">15dp</dimen>
+    <dimen name="cm_main_shadow_size">30dp</dimen>
+</resources>

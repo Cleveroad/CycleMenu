@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cm_prelollipop_additional_margin">0dp</dimen>
+</resources>
