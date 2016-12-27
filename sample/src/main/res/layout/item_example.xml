@@ -102,15 +102,13 @@
         android:id="@+id/itemCycleMenuWidget"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        app:cm_autoMaxRadius="220dp"
+        app:cm_autoMaxRadius="180dp"
         app:cm_autoMinRadius="10dp"
         app:cm_corner="right_top"
         app:cm_fixedRadius="200dp"
         app:cm_radius_scale_type="auto"
         app:cm_scroll_type="endless"
-        app:cm_item_background_tint="#449955"
-        app:cm_corner_image_src="@drawable/ic_favorite_black_24dp"
-        app:cm_ripple_color="#009933"
+        app:cm_item_background_tint="#6a81fe"
         />
 
 </RelativeLayout>

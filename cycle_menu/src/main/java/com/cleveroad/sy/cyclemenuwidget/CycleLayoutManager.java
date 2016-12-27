@@ -16,7 +16,7 @@ import android.view.animation.RotateAnimation;
 
 import com.cleveroad.sy.cyclemenuwidget.CycleMenuWidget.CORNER;
 
-public class CycleLayoutManager extends RecyclerView.LayoutManager {
+class CycleLayoutManager extends RecyclerView.LayoutManager {
 
     /**
      * Scaling coefficient that is used for increasing spaces between two items in lollipop

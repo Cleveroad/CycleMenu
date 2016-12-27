@@ -52,10 +52,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     break;
                 case 1:
                     cycleMenuWidget.setMenuRes(R.menu.cycle_menu_3);
-                    cycleMenuWidget.setCorner(CycleMenuWidget.CORNER.LEFT_BOTTOM);
                     break;
                 case 2:
                     cycleMenuWidget.setMenuRes(R.menu.cycle_menu_4);
+                    cycleMenuWidget.setCorner(CycleMenuWidget.CORNER.LEFT_BOTTOM);
                     break;
                 default:
                     cycleMenuWidget.setMenuRes(R.menu.cycle_menu_5);
