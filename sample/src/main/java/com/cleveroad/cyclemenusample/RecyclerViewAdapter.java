@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.cleveroad.sy.cyclemenuwidget.CycleMenuWidget;
-import com.cleveroad.sy.cyclemenuwidget.OnMenuItemClickListener;
-import com.cleveroad.sy.cyclemenuwidget.OnStateChangedListener;
-import com.cleveroad.sy.cyclemenuwidget.StateSaveListener;
+import com.cleveroad.cyclemenuwidget.CycleMenuWidget;
+import com.cleveroad.cyclemenuwidget.OnMenuItemClickListener;
+import com.cleveroad.cyclemenuwidget.OnStateChangedListener;
+import com.cleveroad.cyclemenuwidget.StateSaveListener;
 
 import java.util.Arrays;
 

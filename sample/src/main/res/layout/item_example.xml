@@ -98,7 +98,7 @@
     </LinearLayout>
 
 
-    <com.cleveroad.sy.cyclemenuwidget.CycleMenuWidget
+    <com.cleveroad.cyclemenuwidget.CycleMenuWidget
         android:id="@+id/itemCycleMenuWidget"
         android:layout_width="match_parent"
         android:layout_height="300dp"

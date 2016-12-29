@@ -1,4 +1,4 @@
-package com.cleveroad.sy.cyclemenuwidget;
+package com.cleveroad.cyclemenuwidget;
 
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
