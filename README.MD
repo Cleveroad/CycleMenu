@@ -16,7 +16,7 @@ What will you receive by using the Fireworky Pull To Refresh component in your a
 To include this library to your project add dependency in **build.gradle** file:
 ```groovy
     dependencies {
-        compile 'com.cleveroad:cycle-menu:1.0.0'
+        compile 'com.cleveroad:cycle-menu:1.0.1'
     }
 ```
 
