@@ -1,4 +1,4 @@
-package com.cleveroad.sy.cyclemenuwidget;
+package com.cleveroad.cyclemenuwidget;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

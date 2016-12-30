@@ -1,18 +1,28 @@
-#CycleMenu 
+#CycleMenu [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) <img src="https://www.cleveroad.com/public/comercial/label-android.svg" height="20"> <a href="https://www.cleveroad.com/?utm_source=github&utm_medium=label&utm_campaign=contacts"><img src="https://www.cleveroad.com/public/comercial/label-cleveroad.svg" height="20"></a>
+![Header image](/images/header.jpg)
 
+## Meet Fireworky Pull To Refresh for Android
 
+It’s time to add some creativity to good old pull to refresh view. You can now literally launch your feed content or search results like a firework! Entertain your app users while they are waiting for refreshment — it’s easy with Fireworky Pull To Refresh library for Android apps.
+
+![Demo image](/images/demo.gif)
+#####Check out the animation on the <strong><a target="_blank" href="https://youtu.be/sJhBKyvF7i4?list=PLi-FH7__aeiydOwY_1q5I8P2EUSseqUCj">Fireworky Pull To Refresh for Android on YouTube</a></strong> in HD quality.
+
+What will you receive by using the Fireworky Pull To Refresh component in your app? The answer is pretty obvious: original and inspiring design element to generate well-disposed users. So, here you go!
+ 
+[![Awesome](/images/logo-footer.png)](https://www.cleveroad.com/?utm_source=github&utm_medium=label&utm_campaign=contacts)
 
 ## Setup and usage
 To include this library to your project add dependency in **build.gradle** file:
 ```groovy
     dependencies {
-        compile 'com.cleveroad:'
+        compile 'com.cleveroad:cycle-menu:1.0.1'
     }
 ```
 
 Use the CycleMenu in layout file
 ```XML
-<com.cleveroad.sy.cyclemenuwidget.CycleMenuWidget
+<com.cleveroad.cyclemenuwidget.CycleMenuWidget
         android:id="@+id/itemCycleMenuWidget"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -41,50 +51,73 @@ cycleMenuWidget.setMenuRes(R.menu.menu_items);
 cycleMenuWidget.setMenuItems(Collection<CycleMenuItem> items);
 ```
 
-methods for changing any settings you can set via attribute in xml:
+You can setup any attribute from xml via method.
+Methods for setting radius scaling type:
 ```JAVA
-void setScrollType(SCROLL scrollType)
+void setScalingType(RADIUS_SCALING_TYPE scalingType)
 void setAutoMinRadius(int autoMinRadius)
 void setAutoMaxRadius(int autoMaxRadius)
-void setScalingType(RADIUS_SCALING_TYPE scalingType)
-void setCorner(CORNER corner)
 void setFixedRadius(int fixedRadius)
+
+```
+If you choose to use `RADIUS_SCALING_TYPE.AUTO` then you need to setup autoMinRadius and autoMaxRadius. This values will be use to calculate radius of menu. 
+If menu has small amount of items - the radius will be calculated to fit all items but not less then autoMinRadius. If there is a lot of items in the menu then radius will be equal autoMaxRadius. 
+if you setup autoMaxRadius bigger then available space for the menu - radius will be reduced.
+If you choose to use RADIUS_SCALING_TYPE.FIXED the the menu radius will be equal to fixedRadius. But not bigger then available space for the menu.
+  
+To setup scroll type. The scroll type can be `ENDLESS` (infinite scrolling) ans `BASIC` (general scrolling). 
+```JAVA
+void setScrollType(SCROLL scrollType)
+```
+
+To setup corner in which will be placed menu use:
+```JAVA
+void setCorner(CORNER corner)
+```
+And methods to setup UI:
+```JAVA
 void setItemsBackgroundTint(ColorStateList itemsBackgroundTint)
 void setRippleColor(int rippleColor)
 void setCornerImageDrawable(Drawable cornerImageDrawable)
 void setCornerImageResource(@DrawableRes int drawableRes)
 void setCornerImageBitmap(Bitmap bitmap)
-
 ```
 
 For listening changing menu state use
 ```JAVA
-void setStateChangeListener( new OnStateChangedListener() {                                 
-                                     void onStateChanged(CycleMenuWidget.STATE state){};                                 
-                                     void onOpen(){};                                 
-                                     void onClose(){};                                 
-                                 })
+setStateChangeListener( 
+    new OnStateChangedListener() {                                 
+        void onStateChanged(CycleMenuWidget.STATE state){};                                 
+        void onOpen(){};                                 
+        void onClose(){};                                 
+})
 ```
 For listening menu items clicks use
 ```JAVA
-void setOnMenuItemClickListener( new OnMenuItemClickListener() {
-                                        void onMenuItemClick(View view, int itemPosition) {}
-                                    })
-                                
-                                
-                                
+setOnMenuItemClickListener( 
+    new OnMenuItemClickListener() {
+        void onMenuItemClick(View view, int itemPosition) {}
+})                              
 ```
 
 For providing saving state listener use
 ```JAVA
-setStateSaveListener( new StateSaveListener() {
-                            void saveState(int itemPosition, double lastItemAngleShift){}
+setStateSaveListener( 
+    new StateSaveListener() {
+        void saveState(int itemPosition, double lastItemAngleShift){}
 });
 ```
 
 ## Support
 
-If you have any other questions regarding the use of this library, please contact us for support at info@cleveroad.com (email subject: "Android CycleMenu widget. Support request.")
+If you have any questions, issues or propositions, please create a <a href="../../issues/new">new issue</a> in this repository.
+
+If you want to hire us, send an email to sales@cleveroad.com or fill the form on <a href="https://www.cleveroad.com/contact">contact page</a>
+
+Follow us:
+
+[![Awesome](/images/social/facebook.png)](https://www.facebook.com/cleveroadinc/)   [![Awesome](/images/social/twitter.png)](https://twitter.com/cleveroadinc)   [![Awesome](/images/social/google.png)](https://plus.google.com/+CleveroadInc)   [![Awesome](/images/social/linkedin.png)](https://www.linkedin.com/company/cleveroad-inc-)   [![Awesome](/images/social/youtube.png)](https://www.youtube.com/channel/UCFNHnq1sEtLiy0YCRHG2Vaw)
+<br/>
 
 
 ## License

@@ -1,4 +1,4 @@
-package com.cleveroad.sy.cyclemenuwidget;
+package com.cleveroad.cyclemenuwidget;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -6,7 +6,6 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.animation.Animation;
@@ -14,9 +13,9 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 
-import com.cleveroad.sy.cyclemenuwidget.CycleMenuWidget.CORNER;
+import com.cleveroad.cyclemenuwidget.CycleMenuWidget.CORNER;
 
-public class CycleLayoutManager extends RecyclerView.LayoutManager {
+class CycleLayoutManager extends RecyclerView.LayoutManager {
 
     /**
      * Scaling coefficient that is used for increasing spaces between two items in lollipop
