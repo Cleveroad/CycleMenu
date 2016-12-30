@@ -6,7 +6,7 @@
 What can be better than an eye-catching design in couple with reasonable features? While using this menu you do not need to worry about the lack of space for some useful features since the scroll type can be endless as well as basic. Choose an appropriate corner, customize your icons and here you go!
 
 ![Demo image](/images/demo.gif)
-#####Check out the animation on the <strong><a target="_blank" href="https://youtu.be/sJhBKyvF7i4?list=PLi-FH7__aeiydOwY_1q5I8P2EUSseqUCj">Fireworky Pull To Refresh for Android on YouTube</a></strong> in HD quality.
+
 
 During its development, we have created a custom LayoutManager for the inner RecyclerView in order to display the elements in a circle with the possibility to scroll them.  
 
