@@ -1,14 +1,16 @@
 #CycleMenu [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) <img src="https://www.cleveroad.com/public/comercial/label-android.svg" height="20"> <a href="https://www.cleveroad.com/?utm_source=github&utm_medium=label&utm_campaign=contacts"><img src="https://www.cleveroad.com/public/comercial/label-cleveroad.svg" height="20"></a>
 ![Header image](/images/header.jpg)
 
-## Meet Fireworky Pull To Refresh for Android
+## Meet CycleMenu for Android by Cleveroad
 
-It’s time to add some creativity to good old pull to refresh view. You can now literally launch your feed content or search results like a firework! Entertain your app users while they are waiting for refreshment — it’s easy with Fireworky Pull To Refresh library for Android apps.
+What can be better than an eye-catching design in couple with reasonable features? While using this menu you do not need to worry about the lack of space for some useful features since the scroll type can be endless as well as basic. Choose an appropriate corner, customize your icons and here you go!
 
 ![Demo image](/images/demo.gif)
 #####Check out the animation on the <strong><a target="_blank" href="https://youtu.be/sJhBKyvF7i4?list=PLi-FH7__aeiydOwY_1q5I8P2EUSseqUCj">Fireworky Pull To Refresh for Android on YouTube</a></strong> in HD quality.
 
-What will you receive by using the Fireworky Pull To Refresh component in your app? The answer is pretty obvious: original and inspiring design element to generate well-disposed users. So, here you go!
+During its development, we have created a custom LayoutManager for the inner RecyclerView in order to display the elements in a circle with the possibility to scroll them.  
+
+In case you are in need of beautiful and functional app menu, you are welcome to use CycleMenu. Make your scroll last forever!
  
 [![Awesome](/images/logo-footer.png)](https://www.cleveroad.com/?utm_source=github&utm_medium=label&utm_campaign=contacts)
 
