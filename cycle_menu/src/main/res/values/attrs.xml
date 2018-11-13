@@ -17,6 +17,8 @@
         <attr name="cm_autoMinRadius" format="dimension"/>
         <attr name="cm_autoMaxRadius" format="dimension"/>
         <attr name="cm_ripple_color" format="reference|color"/>
+        <attr name="cm_collapsed_radius" format="dimension"/>
+        <attr name="cm_background" format="reference|color"/>
 
         <attr name="cm_corner" format="enum">
             <enum name="left_top" value="0"/>

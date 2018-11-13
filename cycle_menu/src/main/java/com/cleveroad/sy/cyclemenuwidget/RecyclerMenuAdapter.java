@@ -1,4 +1,4 @@
-package com.cleveroad.cyclemenuwidget;
+package com.cleveroad.sy.cyclemenuwidget;
 
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
@@ -162,6 +162,4 @@ class RecyclerMenuAdapter extends RecyclerView.Adapter<RecyclerMenuAdapter.ItemH
             return true;
         }
     }
-
-
 }

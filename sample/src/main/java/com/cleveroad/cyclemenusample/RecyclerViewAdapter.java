@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.cleveroad.cyclemenuwidget.CycleMenuWidget;
-import com.cleveroad.cyclemenuwidget.OnMenuItemClickListener;
-import com.cleveroad.cyclemenuwidget.OnStateChangedListener;
-import com.cleveroad.cyclemenuwidget.StateSaveListener;
+import com.cleveroad.sy.cyclemenuwidget.CycleMenuWidget;
+import com.cleveroad.sy.cyclemenuwidget.OnMenuItemClickListener;
+import com.cleveroad.sy.cyclemenuwidget.OnStateChangedListener;
+import com.cleveroad.sy.cyclemenuwidget.StateSaveListener;
 
 import java.util.Arrays;
 
@@ -52,10 +52,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     break;
                 case 1:
                     cycleMenuWidget.setMenuRes(R.menu.cycle_menu_3);
+                    cycleMenuWidget.setCorner(CycleMenuWidget.CORNER.LEFT_BOTTOM);
                     break;
                 case 2:
                     cycleMenuWidget.setMenuRes(R.menu.cycle_menu_4);
-                    cycleMenuWidget.setCorner(CycleMenuWidget.CORNER.LEFT_BOTTOM);
                     break;
                 default:
                     cycleMenuWidget.setMenuRes(R.menu.cycle_menu_5);
@@ -128,6 +128,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             mCycleMenuWidget.setStateChangeListener(this);
             mCycleMenuWidget.setStateSaveListener(this);
             mCycleMenuWidget.setOnMenuItemClickListener(this);
+            mCycleMenuWidget.setScalingType(CycleMenuWidget.RADIUS_SCALING_TYPE.FIXED);
             this.saver = saver;
         }
 
