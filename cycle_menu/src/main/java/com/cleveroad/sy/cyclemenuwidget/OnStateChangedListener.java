@@ -1,4 +1,4 @@
-package com.cleveroad.cyclemenuwidget;
+package com.cleveroad.sy.cyclemenuwidget;
 
 /**
  * Callback on changed stet in cycle menu.

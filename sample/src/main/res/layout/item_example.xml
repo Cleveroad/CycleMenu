@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,14 +11,13 @@
         android:id="@+id/llMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="#22020202"
-            android:src="@drawable/ic_image_filter_drama"/>
+            android:src="@drawable/ic_image_filter_drama" />
 
         <TextView
             android:layout_width="match_parent"
@@ -29,8 +27,7 @@
             android:text="Text content title"
             android:textColor="#000"
             android:textSize="26sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
@@ -40,8 +37,7 @@
             android:text="Lorem Ipsum Dolor sit amet"
             android:textColor="#000"
             android:textSize="26sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -54,8 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
                 android:gravity="center_vertical"
-                android:text="By Mashable"
-                />
+                android:text="By Mashable" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -64,8 +59,7 @@
                 android:layout_toEndOf="@+id/tvLeft1"
                 android:layout_toRightOf="@+id/tvLeft1"
                 android:gravity="center_vertical"
-                android:text="2 hours"
-                />
+                android:text="2 hours" />
 
             <ImageView
                 android:id="@+id/ivRight"
@@ -74,41 +68,41 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:gravity="center_vertical"
-                android:src="@drawable/ic_assistant_photo_black_24dp"
-                />
+                android:src="@drawable/ic_assistant_photo_black_24dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
                 android:layout_marginRight="16dp"
-                android:layout_toLeftOf="@+id/ivRight"
                 android:layout_toStartOf="@+id/ivRight"
+                android:layout_toLeftOf="@+id/ivRight"
                 android:drawableRight="@drawable/ic_favorite_black_24dp"
                 android:gravity="center_vertical"
-                android:text="225 LIKES"
-                />
+                android:text="225 LIKES" />
 
         </RelativeLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="In the tumultuous business of cutting-in and attending to a whale, there is much running backwards..."
-            />
+            android:text="In the tumultuous business of cutting-in and attending to a whale, there is much running backwards..." />
     </LinearLayout>
 
 
-    <com.cleveroad.cyclemenuwidget.CycleMenuWidget
+    <com.cleveroad.sy.cyclemenuwidget.CycleMenuWidget
         android:id="@+id/itemCycleMenuWidget"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        app:cm_autoMaxRadius="180dp"
-        app:cm_autoMinRadius="10dp"
+        app:cm_autoMaxRadius="220dp"
+        app:cm_autoMinRadius="75dp"
+        app:cm_background="@android:color/transparent"
+        app:cm_collapsed_radius="25dp"
         app:cm_corner="right_top"
+        app:cm_corner_image_src="@drawable/ic_favorite_black_24dp"
         app:cm_fixedRadius="200dp"
-        app:cm_radius_scale_type="auto"
-        app:cm_scroll_type="endless"
-        app:cm_item_background_tint="#6a81fe"
-        />
+        app:cm_item_background_tint="#449955"
+        app:cm_radius_scale_type="fixed"
+        app:cm_ripple_color="#009933"
+        app:cm_scroll_type="endless" />
 
 </RelativeLayout>

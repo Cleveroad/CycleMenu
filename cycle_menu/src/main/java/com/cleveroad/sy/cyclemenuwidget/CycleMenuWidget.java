@@ -1,9 +1,10 @@
-package com.cleveroad.cyclemenuwidget;
+package com.cleveroad.sy.cyclemenuwidget;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -219,6 +220,11 @@ public class CycleMenuWidget extends ViewGroup {
     private int mShadowEndColor;
 
     /**
+     * CycleMenuWidget background color
+     */
+    private int mBackgroundColor;
+
+    /**
      * Paint for background circle
      */
     private Paint mCirclePaint;
@@ -247,7 +253,7 @@ public class CycleMenuWidget extends ViewGroup {
     /**
      * Minimal circle radius for the background
      */
-    private int mCircleMinRadius;
+    private int mCircleMinRadius = DEFAULT_UNDEFINED_VALUE;
     /**
      * Radius for drawing background circle
      */
@@ -261,7 +267,7 @@ public class CycleMenuWidget extends ViewGroup {
     /**
      * Angle in degrees from the layout manager to be saved if holder with cycleMenuWidget will be reused.
      */
-    private double mCurrentAngleOffset = 0;
+    private double mCurrentAngleOffset = UNDEFINED_ANGLE_VALUE;
 
     /**
      * Size of the one item element
@@ -345,11 +351,13 @@ public class CycleMenuWidget extends ViewGroup {
         mCorner = CORNER.valueOf(typedArrayValues.getInt(R.styleable.CycleMenuWidget_cm_corner, CORNER.RIGHT_TOP.getValue()));
         mAutoMinRadius = typedArrayValues.getDimensionPixelSize(R.styleable.CycleMenuWidget_cm_autoMinRadius, DEFAULT_UNDEFINED_VALUE);
         mAutoMaxRadius = typedArrayValues.getDimensionPixelSize(R.styleable.CycleMenuWidget_cm_autoMaxRadius, DEFAULT_UNDEFINED_VALUE);
-        mFixedRadius = typedArrayValues.getDimensionPixelSize(R.styleable.CycleMenuWidget_cm_fixedRadius, mCircleMinRadius);
+        mFixedRadius = typedArrayValues.getDimensionPixelSize(R.styleable.CycleMenuWidget_cm_fixedRadius, DEFAULT_UNDEFINED_VALUE);
         mScalingType = RADIUS_SCALING_TYPE.valueOf(typedArrayValues.getInt(R.styleable.CycleMenuWidget_cm_radius_scale_type, RADIUS_SCALING_TYPE.AUTO.getValue()));
         mScrollType = SCROLL.valueOf(typedArrayValues.getInt(R.styleable.CycleMenuWidget_cm_scroll_type, SCROLL.BASIC.getValue()));
         Drawable cornerImageDrawable = typedArrayValues.getDrawable(R.styleable.CycleMenuWidget_cm_corner_image_src);
         mRippleColor = typedArrayValues.getColor(R.styleable.CycleMenuWidget_cm_ripple_color, DEFAULT_UNDEFINED_VALUE);
+        setCollapsedRadius(typedArrayValues.getDimensionPixelSize(R.styleable.CycleMenuWidget_cm_collapsed_radius, DEFAULT_UNDEFINED_VALUE));
+        mBackgroundColor = typedArrayValues.getColor(R.styleable.CycleMenuWidget_cm_background, DEFAULT_UNDEFINED_VALUE);
         typedArrayValues.recycle();
 
         mCirclePaint = new Paint();
@@ -375,7 +383,9 @@ public class CycleMenuWidget extends ViewGroup {
         mShadowSize = getResources().getDimensionPixelSize(R.dimen.cm_main_shadow_size);
         mVariableShadowSize = mShadowSize * SHADOW_SIZE_MIN_COEFFICIENT;
         mPreLollipopAdditionalButtonsMargin = getContext().getResources().getDimensionPixelSize(R.dimen.cm_prelollipop_additional_margin);
-        mCircleMinRadius = getContext().getResources().getDimensionPixelSize(R.dimen.cm_circle_min_radius);
+        if (mCircleMinRadius == DEFAULT_UNDEFINED_VALUE) {
+            mCircleMinRadius = getContext().getResources().getDimensionPixelSize(R.dimen.cm_circle_min_radius);
+        }
         mAnimationCircleRadius = mCircleMinRadius;
 
         mRecyclerView = new TouchedRecyclerView(getContext());
@@ -394,6 +404,9 @@ public class CycleMenuWidget extends ViewGroup {
             mCenterImage.setImageDrawable(cornerImageDrawable);
         } else {
             mCenterImage.setImageResource(R.drawable.cm_ic_plus);
+        }
+        if (mBackgroundColor != DEFAULT_UNDEFINED_VALUE) {
+            mCirclePaint.setColor(mBackgroundColor);
         }
         mCenterImage.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         addView(mCenterImage);
@@ -433,6 +446,7 @@ public class CycleMenuWidget extends ViewGroup {
      *
      * @param menuResId menu resource from which need to get menuItems and add to the cycleMenu
      */
+    @SuppressLint("RestrictedApi")
     public void setMenuRes(@MenuRes int menuResId) {
         mInitialized = false;
         Menu menu = new MenuBuilder(getContext());
@@ -518,7 +532,7 @@ public class CycleMenuWidget extends ViewGroup {
     /**
      * Set image for corner image button
      *
-     * @param cornerImageDrawable
+     * @param cornerImageDrawable resource to drawable
      */
     public void setCornerImageDrawable(@Nullable Drawable cornerImageDrawable) {
         mCenterImage.setImageDrawable(cornerImageDrawable);
@@ -573,6 +587,31 @@ public class CycleMenuWidget extends ViewGroup {
     }
 
     /**
+     * Applies a radius of the collapsed menu.
+     *
+     * @param collapsedRadius radius to set (in px)
+     */
+    public void setCollapsedRadius(int collapsedRadius)
+            throws IllegalArgumentException {
+        mInitialized = false;
+        if (mScalingType == RADIUS_SCALING_TYPE.FIXED && collapsedRadius < mFixedRadius
+                || mScalingType == RADIUS_SCALING_TYPE.AUTO && collapsedRadius < mAutoMaxRadius) {
+            mCircleMinRadius = collapsedRadius;
+        }
+    }
+
+    /**
+     * Applies a color to the CycleMenuWidget background
+     *
+     * @param backgroundColor color to set
+     */
+    public void setBackground(int backgroundColor) {
+        mBackgroundColor = backgroundColor;
+        mCirclePaint.setColor(mBackgroundColor);
+        invalidate();
+    }
+
+    /**
      * Applies a tint to the background drawable of the items in cycle menu. Does not modify the current tint
      * mode, which is {@link PorterDuff.Mode#SRC_IN} by default.
      *
@@ -586,6 +625,7 @@ public class CycleMenuWidget extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        setupMargins();
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
         int parentWidth = ((ViewGroup) getParent()).getWidth();
@@ -681,7 +721,6 @@ public class CycleMenuWidget extends ViewGroup {
         int recyclerBottom = 0;
 
         if (mCorner.isUpSide()) {
-            centerImageTop = 0;
             centerImageBottom = mCenterImage.getMeasuredHeight();
             recyclerTop = t;
             recyclerBottom = t + mRecyclerSize;
@@ -692,7 +731,6 @@ public class CycleMenuWidget extends ViewGroup {
             recyclerBottom = b;
         }
         if (mCorner.isLeftSide()) {
-            centerImageLeft = 0;
             centerImageRight = mCenterImage.getMeasuredWidth();
             recyclerLeft = l;
             recyclerRight = l + mRecyclerSize;
@@ -914,6 +952,33 @@ public class CycleMenuWidget extends ViewGroup {
         if (mOnStateChangeListener != null) {
             mOnStateChangeListener.onStateChanged(mState);
         }
+    }
+
+    private void setupMargins() {
+        MarginLayoutParams params = (MarginLayoutParams) getLayoutParams();
+        if (params == null) {
+            return;
+        }
+
+        switch (mCorner) {
+            case LEFT_TOP:
+                params.leftMargin = 0;
+                params.topMargin = 0;
+                break;
+            case LEFT_BOTTOM:
+                params.leftMargin = 0;
+                params.bottomMargin = 0;
+                break;
+            case RIGHT_BOTTOM:
+                params.rightMargin = 0;
+                params.bottomMargin = 0;
+                break;
+            case RIGHT_TOP:
+                params.rightMargin = 0;
+                params.topMargin = 0;
+                break;
+        }
+        setLayoutParams(params);
     }
 
     /**

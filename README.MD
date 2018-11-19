@@ -8,17 +8,17 @@ What can be better than an eye-catching design in couple with reasonable feature
 ![Demo image](/images/demo.gif)
 
 
-During its development, we have created a custom LayoutManager for the inner RecyclerView in order to display the elements in a circle with the possibility to scroll them.  
+During its development, we have created a custom LayoutManager for the inner RecyclerView in order to display the elements in a circle with the possibility to scroll them.
 
 In case you are in need of beautiful and functional app menu, you are welcome to use CycleMenu. Make your scroll last forever!
- 
+
 [![Awesome](/images/logo-footer.png)](https://www.cleveroad.com/?utm_source=github&utm_medium=label&utm_campaign=contacts)
 
 ## Setup and usage
 To include this library to your project add dependency in **build.gradle** file:
 ```groovy
     dependencies {
-        compile 'com.cleveroad:cycle-menu:1.0.1'
+        implementation 'com.cleveroad:cycle-menu:1.0.2'
     }
 ```
 
@@ -28,7 +28,7 @@ Use the CycleMenu in layout file
         android:id="@+id/itemCycleMenuWidget"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        
+
         app:cm_autoMaxRadius="220dp"
         app:cm_autoMinRadius="10dp"
         app:cm_corner="right_top"
@@ -44,7 +44,7 @@ Use the CycleMenu in layout file
 or programmatically
 ```JAVA
 CycleMenuWidget cycleMenuWidget = new CycleMenuWidget(mContext);
-cycleMenuWidget.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));           
+cycleMenuWidget.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 container.addView(cycleMenuWidget);
 ```
 To set menu resources from xml resource or Collection use:
@@ -62,12 +62,12 @@ void setAutoMaxRadius(int autoMaxRadius)
 void setFixedRadius(int fixedRadius)
 
 ```
-If you choose to use `RADIUS_SCALING_TYPE.AUTO` then you need to setup autoMinRadius and autoMaxRadius. This values will be use to calculate radius of menu. 
-If menu has small amount of items - the radius will be calculated to fit all items but not less then autoMinRadius. If there is a lot of items in the menu then radius will be equal autoMaxRadius. 
+If you choose to use `RADIUS_SCALING_TYPE.AUTO` then you need to setup autoMinRadius and autoMaxRadius. This values will be use to calculate radius of menu.
+If menu has small amount of items - the radius will be calculated to fit all items but not less then autoMinRadius. If there is a lot of items in the menu then radius will be equal autoMaxRadius.
 if you setup autoMaxRadius bigger then available space for the menu - radius will be reduced.
 If you choose to use RADIUS_SCALING_TYPE.FIXED the the menu radius will be equal to fixedRadius. But not bigger then available space for the menu.
-  
-To setup scroll type. The scroll type can be `ENDLESS` (infinite scrolling) ans `BASIC` (general scrolling). 
+
+To setup scroll type. The scroll type can be `ENDLESS` (infinite scrolling) ans `BASIC` (general scrolling).
 ```JAVA
 void setScrollType(SCROLL scrollType)
 ```
@@ -83,32 +83,37 @@ void setRippleColor(int rippleColor)
 void setCornerImageDrawable(Drawable cornerImageDrawable)
 void setCornerImageResource(@DrawableRes int drawableRes)
 void setCornerImageBitmap(Bitmap bitmap)
+void setCollapsedRadius(int collapsedRadius)
+void setBackground(int backgroundColor)
 ```
 
 For listening changing menu state use
 ```JAVA
-setStateChangeListener( 
-    new OnStateChangedListener() {                                 
-        void onStateChanged(CycleMenuWidget.STATE state){};                                 
-        void onOpen(){};                                 
-        void onClose(){};                                 
+setStateChangeListener(
+    new OnStateChangedListener() {
+        void onStateChanged(CycleMenuWidget.STATE state){};
+        void onOpen(){};
+        void onClose(){};
 })
 ```
 For listening menu items clicks use
 ```JAVA
-setOnMenuItemClickListener( 
+setOnMenuItemClickListener(
     new OnMenuItemClickListener() {
         void onMenuItemClick(View view, int itemPosition) {}
-})                              
+})
 ```
 
 For providing saving state listener use
 ```JAVA
-setStateSaveListener( 
+setStateSaveListener(
     new StateSaveListener() {
         void saveState(int itemPosition, double lastItemAngleShift){}
 });
 ```
+
+## Changelog
+See [changelog history].
 
 ## Support
 
@@ -145,3 +150,5 @@ Follow us:
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
+
+[changelog history]: /CHANGELOG.md

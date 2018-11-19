@@ -1,4 +1,4 @@
-package com.cleveroad.cyclemenuwidget;
+package com.cleveroad.sy.cyclemenuwidget;
 
 /**
  * StateSaveListener allow you to handle saving cycleMenu state when the view will be detached from its parent.

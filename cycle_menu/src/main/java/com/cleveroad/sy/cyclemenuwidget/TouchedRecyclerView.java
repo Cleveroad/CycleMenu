@@ -1,4 +1,4 @@
-package com.cleveroad.cyclemenuwidget;
+package com.cleveroad.sy.cyclemenuwidget;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -62,29 +62,24 @@ class TouchedRecyclerView extends RecyclerView {
             return false; // Do not intercept touch event, let the child handle it
         }
 
-        switch (action) {
-            case MotionEvent.ACTION_MOVE: {
-                if (mIsScrolling) {
-                    // We're currently scrolling, so yes, intercept the
-                    // touch event!
-                    return true;
-                }
-
-                // If the user has dragged her finger horizontally more than
-                // the touch slop, start the scroll
-
-                // left as an exercise for the reader
-                double diff = Math.sqrt((ev.getX() - lastX) * (ev.getX() - lastX) + (ev.getY() - lastY) * (ev.getY() - lastY));
-                lastX = ev.getX();
-                lastY = ev.getY();
-                // Touch slop should be calculated using ViewConfiguration
-                // constants.
-                if (diff > slop) {
-                    // Start scrolling!
-                    mIsScrolling = true;
-                    return true;
-                }
-                break;
+        // If the user has dragged her finger horizontally more than
+        // the touch slop, start the scroll
+        // left as an exercise for the reader
+        // Touch slop should be calculated using ViewConfiguration
+        // constants.
+        if (action == MotionEvent.ACTION_MOVE) {
+            if (mIsScrolling) {
+                // We're currently scrolling, so yes, intercept the
+                // touch event!
+                return true;
+            }
+            double diff = Math.sqrt((ev.getX() - lastX) * (ev.getX() - lastX) + (ev.getY() - lastY) * (ev.getY() - lastY));
+            lastX = ev.getX();
+            lastY = ev.getY();
+            if (diff > slop) {
+                // Start scrolling!
+                mIsScrolling = true;
+                return true;
             }
         }
 
@@ -99,7 +94,7 @@ class TouchedRecyclerView extends RecyclerView {
 
         if (mTouchEnabled && mHasItemsToScroll) {
             getParent().requestDisallowInterceptTouchEvent(true);
-            return super.onTouchEvent(e) & true;
+            return super.onTouchEvent(e);
         }
         return mTouchEnabled;
     }
