@@ -24,7 +24,7 @@ To include this library to your project add dependency in **build.gradle** file:
 
 Use the CycleMenu in layout file
 ```XML
-<com.cleveroad.cyclemenuwidget.CycleMenuWidget
+<com.cleveroad.sy.cyclemenuwidget.CycleMenuWidget
         android:id="@+id/itemCycleMenuWidget"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
